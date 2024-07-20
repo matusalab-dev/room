@@ -34,7 +34,7 @@ const ProductCategory = () => {
                   {data.title} <br /> Furnitures
                   <span className=" text-base">({data.items.length})</span>
                 </figcaption>
-                <div className="overlay--inner "></div>
+                <div className="overlay--inner"></div>
               </NavLink>
             );
           })}

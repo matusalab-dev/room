@@ -27,7 +27,7 @@ const ProductItem = ({ searchItem }) => {
           onMouseEnter={() => handleMouseEnter(productDetail.id)}
           onMouseLeave={() => handleMouseLeave()}
         >
-          <figure className="w-full h-full overflow-hidden bg-gray-300">
+          <figure className="w-full h-full overflow-hidden">
             <img
               src={productDetail.imageUrl}
               alt={productDetail.name}
