@@ -1,5 +1,6 @@
-import { useStateContext } from "../../contexts/StateContext";
 import { AiFillCloseSquare } from "react-icons/ai";
+
+import { useStateContext } from "../../contexts/StateContext";
 import WishlistItem from "./WishlistItem";
 
 const Wishlist = () => {
