@@ -1,7 +1,5 @@
 ### Project Description
 
-[Live Demo: room Project](https://room-store-two.vercel.app/)
-
 <a href="https://room-store-two.vercel.app/" target="_blank">Live Demo: room Project</a>
 
 
