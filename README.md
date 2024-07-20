@@ -1,8 +1,8 @@
 ### Project Description
 
-[Live Demo: replace with actual link](https://room-ecommerce.pages.dev/)
+[Live Demo: room Project]([https://room-ecommerce.pages.dev/](https://room-store-two.vercel.app/))
 
-Room project is an e-commerce website specializing in furniture sales. Here's a detailed breakdown of its features:
+room project is an e-commerce website specializing in furniture sales. Here's a detailed breakdown of its features:
 
 Category Section:
 
