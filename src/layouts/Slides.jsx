@@ -5,10 +5,15 @@ import { useStateContext } from "../contexts/StateContext";
 import IconArrow from "../assets/icons/IconArrow";
 import IconRight from "../assets/icons/IconRight";
 import IconLeft from "../assets/icons/IconLeft";
+import useSlideshow from "../hooks/useSlideshow";
 
 const Slides = () => {
-  const { slideIndex, slidesDetail, handleNext, handlePrev } =
-    useStateContext();
+  // const { slideIndex, slidesDetail, handleNext, handlePrev } =
+  //   useStateContext();
+  const { slideIndex, currentSlide, handleNext, handlePrev, slidesDetail } =
+    useSlideshow();
+  console.log("index in slide section", slideIndex);
+  console.log("currentSlide in slide section", currentSlide);
 
   // Display products slides
   return (
@@ -26,7 +31,7 @@ const Slides = () => {
         </NavLink>
       </section>
       {/* wrapper for the next and prev buttons of the slide  --> */}
-      <div className="btn__wrapper--desktop ">
+      <div className="btn__wrapper--desktop">
         <button
           className="btn"
           onClick={handlePrev}

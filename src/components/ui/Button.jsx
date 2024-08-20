@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 
 export const LinkEl = ({ link, role, label, className, ...props }) => {
   const mergedClass = twMerge(
-    "mt-8 self-start inline-block rounded-md bg-primary-100 px-7 py-[0.5rem] text-center text-lg font-semibold text-secondary-400 transition-all  ease-in hover:shadow-2xl",
+    "mt-8 self-start  inline-block  rounded-md bg-primary-100 px-7 py-[0.5rem] text-center text-lg font-semibold text-secondary-400 transition-all  ease-in hover:shadow-2xl",
     className
   );
 

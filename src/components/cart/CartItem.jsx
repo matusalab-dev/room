@@ -17,13 +17,13 @@ const CartItem = ({
     <div className="space-y-4">
       {/* check if the cart is empty, tell them to go shopping*/}
       {cartProducts.length < 1 && (
-        <div className="flex flex-col gap-6 justify-center items-center text-[1rem]">
+        <div className="flex flex-col items-center justify-center gap-6 text-[1rem]">
           <h2> your shopping bug is empty</h2>
           <NavLinkList
             title="go back to shopping"
             link="../shopping"
             onClick={handleShowCart}
-            className="inline-block px-3 py-2 text-primary-white self-center items-start bg-primary-black"
+            className="inline-block items-start self-center bg-primary-black px-3 py-2 text-primary-white"
           ></NavLinkList>
         </div>
       )}
@@ -36,22 +36,22 @@ const CartItem = ({
           return (
             <div
               key={id}
-              className="font-normal bg-primary-white py-6 px-6 sm:py-3 sm:px-3 hover:shadow-md hover:shadow-primary-dark-gray gap-y-7 gap-x-5 sm:gap-x-3 justify-items-start grid grid-cols-[7.7em,minmax(max-content,max-content),minmax(max-content,100%)] xs:grid-cols-[6.7em,minmax(max-content,max-content),minmax(max-content,100%)] grid-rows-[repeat(2,min-content)]"
+              className="hover:shadow-primary-dark-gray grid grid-cols-[7.7em,minmax(max-content,max-content),minmax(max-content,100%)] grid-rows-[repeat(2,min-content)] justify-items-start gap-x-5 gap-y-7 bg-primary-white px-6 py-6 font-normal hover:shadow-md sm:gap-x-3 sm:px-3 sm:py-3 xs:grid-cols-[6.7em,minmax(max-content,max-content),minmax(max-content,100%)]"
             >
               <img
                 src={imageUrl}
                 alt="cart product"
-                className="bg-primary-black max-w-full col-[1/2] row-[1/3] h-full object-cover w-full"
+                className="col-[1/2] row-[1/3] h-full w-full max-w-full bg-primary-black object-cover"
               />
               <NavLink
                 title={name}
                 to={`/shopping/${cartItem.id}`}
                 onClick={() => handleShowCart(false)}
-                className="text-[1rem] sm:text-sm place-items-start col-[2/3] max-w-[18ch] sm:max-w-[10ch] break-keep whitespace-nowrap xs:overflow-hidden xs:text-ellipsis capitalize"
+                className="col-[2/3] max-w-[18ch] place-items-start whitespace-nowrap break-keep text-[1rem] capitalize sm:max-w-[10ch] sm:text-sm xs:overflow-hidden xs:text-ellipsis"
               >
                 {name}
               </NavLink>
-              <p className="text-[1rem] sm:text-sm  col-[3/4] self-start place-self-end ">
+              <p className="col-[3/4] place-self-end self-start text-[1rem] sm:text-sm">
                 {CurrencyFormatter("en-US", price)}
               </p>
               <CartQuantity
@@ -60,7 +60,7 @@ const CartItem = ({
                 quantity={quantity}
               />
               <button
-                className="self-end ml-auto"
+                className="ml-auto self-end"
                 onClick={() => handleRemove(cartItem, quantity)}
               >
                 <AiOutlineDelete fontSize="17px" fontWeight="100" />

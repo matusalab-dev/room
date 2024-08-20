@@ -10,7 +10,6 @@ const StateProvider = ({ children }) => {
   // shopping Products details
   const productsDetail = ShoppingProduct();
 
-  const [slideIndex, setSlideIndex] = useState(0);
   // products state
   const [productInfo, setProductInfo] = useState(productsDetail);
   const [showCart, setShowCart] = useState(false);
@@ -35,7 +34,7 @@ const StateProvider = ({ children }) => {
   function handleAddToCart(productToAdd, quantity) {
     // check if the product exist in the cart
     const doesExist = cartItems.find(
-      (cartItem) => cartItem.id === productToAdd.id
+      (cartItem) => cartItem.id === productToAdd.id,
     );
 
     // if it exist in the cart
@@ -45,7 +44,7 @@ const StateProvider = ({ children }) => {
         const updatedCartItems = prevProductInfo.map((productInfo) =>
           productInfo.id === productToAdd.id
             ? { ...productInfo, inCart: true }
-            : productInfo
+            : productInfo,
         );
 
         return updatedCartItems;
@@ -64,7 +63,7 @@ const StateProvider = ({ children }) => {
       // then update price and quantity accordingly
       setTotalQty((prevTotalQty) => prevTotalQty + quantity);
       setTotalPrice(
-        (prevTotalPrice) => prevTotalPrice + productToAdd.price * quantity
+        (prevTotalPrice) => prevTotalPrice + productToAdd.price * quantity,
       );
       setQty(1);
     }
@@ -75,7 +74,7 @@ const StateProvider = ({ children }) => {
   function handleAddToWishlist(productWishToAdd) {
     // check if the product exist in the wishList
     const doesExist = wishlistItems.find(
-      (wishlistItem) => wishlistItem.id === productWishToAdd.id
+      (wishlistItem) => wishlistItem.id === productWishToAdd.id,
     );
 
     // if it exist in the cart
@@ -85,7 +84,7 @@ const StateProvider = ({ children }) => {
         const updatedWishLists = prevProductInfo.map((productInfo) =>
           productInfo.id === productWishToAdd.id
             ? { ...productInfo, inWishlist: true }
-            : productInfo
+            : productInfo,
         );
 
         return updatedWishLists;
@@ -107,7 +106,7 @@ const StateProvider = ({ children }) => {
   function handleRemoveFromCart(cartProduct) {
     // find that cart items with product-id to be removed.
     const productFound = cartItems.find(
-      (cartItems) => cartItems.id === cartProduct.id
+      (cartItems) => cartItems.id === cartProduct.id,
     );
 
     // return all cart items except those with id that we want to get removed
@@ -118,7 +117,7 @@ const StateProvider = ({ children }) => {
     setTotalQty((prevTotalQty) => prevTotalQty - productFound.quantity);
     setTotalPrice(
       (prevTotalPrice) =>
-        prevTotalPrice - productFound.price * productFound.quantity
+        prevTotalPrice - productFound.price * productFound.quantity,
     );
 
     // update productInfo after removing the existing cartItems, update in-cart state into false
@@ -126,7 +125,7 @@ const StateProvider = ({ children }) => {
       const updatedCartItems = prevProductInfo.map((productInfo) =>
         productInfo.id === cartProduct.id
           ? { ...productInfo, inCart: false }
-          : productInfo
+          : productInfo,
       );
 
       return updatedCartItems;
@@ -135,14 +134,9 @@ const StateProvider = ({ children }) => {
 
   // function to remove a product from the wish-list and update state accordingly
   function handleRemoveFromWishlist(wishlistProduct) {
-    // find that cart items with product-id to be removed.
-    const productFound = wishlistItems.find(
-      (wishlistItems) => wishlistItems.id === wishlistProduct.id
-    );
-
     // return all cart items except those with id that we want to get removed
     const removedItem = wishlistItems.filter(
-      (item) => item.id !== wishlistProduct.id
+      (item) => item.id !== wishlistProduct.id,
     );
     // update the wishlistItems
     setWishlistItems(removedItem);
@@ -152,7 +146,7 @@ const StateProvider = ({ children }) => {
       const updatedWishlistItems = prevProductInfo.map((productInfo) =>
         productInfo.id === wishlistProduct.id
           ? { ...productInfo, inWishlist: false }
-          : productInfo
+          : productInfo,
       );
 
       return updatedWishlistItems;
@@ -165,17 +159,17 @@ const StateProvider = ({ children }) => {
       // quantities and pricing of existing items will get updated accordingly.
       setCartItems((prevCartItems) => {
         const updatedCartItems = prevCartItems.map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
         );
 
         const totalQuantity = updatedCartItems.reduce(
           (acc, item) => acc + item.quantity,
-          0
+          0,
         );
 
         const totalPrice = updatedCartItems.reduce(
           (acc, item) => acc + item.quantity * item.price,
-          0
+          0,
         );
 
         setTotalQty(totalQuantity);
@@ -194,12 +188,12 @@ const StateProvider = ({ children }) => {
 
         const totalQuantity = updatedCartItems.reduce(
           (acc, item) => acc + item.quantity,
-          0
+          0,
         );
 
         const totalPrice = updatedCartItems.reduce(
           (acc, item) => acc + item.quantity * item.price,
-          0
+          0,
         );
 
         setTotalQty(totalQuantity);
@@ -225,60 +219,43 @@ const StateProvider = ({ children }) => {
   }
 
   // handle searching for products
-  const [searchItem, setSearchItem] = useState("");
-  const [foundItem, setFoundItem] = useState(productInfo);
+  const [searchedItem, setSearchedItem] = useState({
+    productItem: productsDetail,
+    searchTerm: "",
+  });
+  // console.log("outer founded", foundItem);
+  const { productItem, searchTerm } = searchedItem;
+  console.log("outer searchedItem", productItem);
+
+  const filteredProduct = productItem.filter((product) => {
+    return product.name.toLocaleLowerCase().includes(searchTerm);
+  });
+
+  console.log("searchedProduct", filteredProduct);
 
   function handleSearch(e) {
+    console.log("starting found item: " + { ...productItem });
     const searchValue = e.target.value;
 
-    setSearchItem(searchValue.toLowerCase());
+    setSearchedItem((prevSearchedItem) => ({
+      ...prevSearchedItem,
+      searchTerm: searchValue.toLocaleLowerCase(),
+    }));
 
-    const productFound = productInfo.filter((product) => {
-      return (
-        searchItem !== "" && product.name.toLowerCase().includes(searchItem)
-      );
-    });
-
-    console.log("filtered Search Product", productFound);
-    setFoundItem(productFound);
+    // setSearchedItem(productFound);
+    // setSearchedItem((prevSearchedItem) => ({
+    //   ...prevSearchedItem,
+    //   productItem: productFound,
+    // }));
+    console.log("ending found item: " + { ...productItem });
+    console.log("inner ending searchedItem", productItem);
   }
 
-  // home-page slides context
-  // custom slides code
-  const slidesDetail = CarousalList();
-
-  // handle the next click
-  const handleNext = () => {
-    if (slideIndex < slidesDetail.length - 1) {
-      setSlideIndex((prevIndex) => prevIndex + 1);
-    }
-
-    if (slideIndex === slidesDetail.length - 1) {
-      setSlideIndex((prevIndex) => prevIndex - 2);
-    }
-
-    return;
-  };
-
-  // handle previous click
-  const handlePrev = () => {
-    if (slideIndex > 0 && slideIndex < slidesDetail.length) {
-      setSlideIndex((prevIndex) => prevIndex - 1);
-    }
-
-    if (slideIndex === 0) {
-      setSlideIndex((prevIndex) => prevIndex + 2);
-    }
-
-    return;
-  };
-  // slides state end
-
   const stateValue = {
-    slideIndex,
-    slidesDetail,
-    handleNext,
-    handlePrev,
+    // slideIndex,
+    // slidesDetail,
+    // handleNext,
+    // handlePrev,
     productInfo,
     setProductInfo,
     handleDec,
@@ -292,9 +269,9 @@ const StateProvider = ({ children }) => {
     handleRemoveFromCart,
     handleCartQuantity,
     handleSearch,
-    searchItem,
-    setSearchItem,
-    foundItem,
+    searchedItem,
+    setSearchedItem,
+    filteredProduct,
     cartStatus,
     showCart,
     handleShowCart,

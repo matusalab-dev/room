@@ -19,17 +19,17 @@ export const InputComponent = ({
   ...props
 }) => {
   const InputMerged = twMerge(
-    " text-[1rem] w-full text-primary-200 rounded-[0.3rem] p-3 mt-1 font-semibold placeholder:opacity-60 focus:border-white  active:border-white border-6  focus:outline-none focus:outline-white focus:outline-offset-0",
-    inputClass
+    " text-[1rem] w-full rounded-[0.3rem] p-3 mt-1 font-semibold placeholder:opacity-60 text-primary-200 focus:border-white  active:border-white border-6  focus:outline-none focus:outline-white focus:outline-offset-0",
+    inputClass,
   );
 
   const LabelIconMerged = twMerge(
     "mr-1 text-red-500 text-5xl ",
-    labelIconClass
+    labelIconClass,
   );
   const LabelMerged = twMerge(
     "flex font-semibold text-secondary-300",
-    labelClass
+    labelClass,
   );
   const inputWrapperMerged = twMerge("mt-6 flex items-center", inputWrapper);
 

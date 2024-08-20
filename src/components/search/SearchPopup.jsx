@@ -8,11 +8,14 @@ import SearchResultCount from "./SearchResultCount";
 import { AiFillCloseSquare } from "react-icons/ai";
 
 const SearchPopup = ({ toggle, handleClosePopup, inputClass, ...props }) => {
-  const { searchItem, foundItem, handleSearch } = useStateContext();
+  const { searchItem, filteredProduct, searchedItem, handleSearch } =
+    useStateContext();
+
+  const { productItem, searchTerm } = searchedItem;
 
   const InputMerged = twMerge(
-    "col-[1/4] self-end peer min-w-[16rem] w-full max-w-3xl pl-4 pr-2 py-2 focus:outline-white rounded-sm focus:border-none focus:outline-offset-0  bg-primary-white focus:border-white border-[1.7px] active:border-primary-darkGray placeholder:text-primary-veryDarkGray placeholder:text-[0.9rem] text-primary-darkGray font-sans placeholder:font-sans font-semibold ",
-    inputClass
+    "col-[1/4] self-end peer min-w-[16rem] w-full max-w-3xl pl-4 pr-2 py-2 focus:outline-white rounded-sm focus:border-none focus:outline-offset-0  bg-primary-white focus:border-white border-[1.7px] active:border-primary-darkGray placeholder:text-primary-veryDarkGray placeholder:text-[0.95rem] text-primary-darkGray font-sans placeholder:font-sans",
+    inputClass,
   );
 
   return (
@@ -23,7 +26,7 @@ const SearchPopup = ({ toggle, handleClosePopup, inputClass, ...props }) => {
     >
       <input
         type="text"
-        className={`${InputMerged} `}
+        className={InputMerged}
         name="search"
         placeholder="Looking for products..."
         id="search"
@@ -40,7 +43,7 @@ const SearchPopup = ({ toggle, handleClosePopup, inputClass, ...props }) => {
         styleCloseIcon="self-center justify-self-end z-50 col-[4/-1] mr-6 mt-1 xs:mr-0"
         currentColor="white"
       /> */}
-      <button className="font-secondary font-thin text-3xl text-primary-white self-center justify-self-start z-50 col-[4/-1] cursor-pointer">
+      <button className="z-50 col-[4/-1] cursor-pointer self-center justify-self-start font-secondary text-3xl font-thin text-primary-white">
         <AiFillCloseSquare
           role="button"
           aria-description="icon to close the cart items side-bar"
@@ -50,8 +53,8 @@ const SearchPopup = ({ toggle, handleClosePopup, inputClass, ...props }) => {
 
       <SearchResultCount
         styleResult="row-[2/3] col-span-full text-primary-white"
-        searchItem={searchItem}
-        foundItem={foundItem}
+        searchItem={searchTerm}
+        foundItem={filteredProduct}
       />
     </Overlay>
   );

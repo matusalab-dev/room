@@ -24,7 +24,7 @@ const NavListShop = ({ className }) => {
   const classMerged = twMerge("nav__link--shop sm:hidden", className);
 
   return (
-    <ul className="nav__list sm:hidden flex gap-6 justify-center items-center ">
+    <ul className="nav__list flex items-center justify-center gap-6 sm:hidden">
       <li>
         <NavLinkList
           link="/"
@@ -76,22 +76,22 @@ export const ShopsNavbar = () => {
       <nav
         role="navigation"
         aria-label="Main Navigation"
-        className="nav flex items-center justify-between gap-6 relative"
+        className="nav relative flex items-center justify-between gap-6"
       >
         <Logo
           styleLink="sm:hidden text-3xl shrink-0 mr-20 md:mr-10 sm:mr-3 xs:mr-2 text-primary-darkGray"
           currentColor="hsl(0, 0%, 63%)"
         />
         {/* shopping nav-list  */}
-        <NavListShop className="max-w-[6em]  text-primary-darkGray  " />
+        <NavListShop className="max-w-[6em] text-primary-darkGray" />
 
         {/* <!-- Mobile-navigation --> */}
         <nav
           className={`${
             isToggled
-              ? "sm:flex  sm:fixed sm:z-[200] sm:px-8 sm:py-12"
+              ? "sm:fixed sm:z-[200] sm:flex sm:px-8 sm:py-12"
               : "sm:hidden"
-          }  nav-mobile gap-x-4`}
+          } nav-mobile gap-x-4`}
         >
           <IconClose
             onClick={() => handleIsToggled()}
@@ -103,13 +103,13 @@ export const ShopsNavbar = () => {
             className="text-primary-black"
             handleIsToggled={handleIsToggled}
           />
-          <div className="overlay basis-0 text-[#fff] "></div>
+          <div className="overlay basis-0 text-[#fff]"></div>
         </nav>
 
         <nav
           className={`${
-            isToggled ? "sm:hidden" : "sm:flex "
-          }  hidden  sm:gap-x-10`}
+            isToggled ? "sm:hidden" : "sm:flex"
+          } hidden sm:gap-x-10`}
           id="hamburger-menu"
         >
           <IconHamburger
@@ -131,23 +131,23 @@ export const ShopsNavbar = () => {
         <ul
           className={`${
             isToggled ? "sm:hidden" : "sm:flex"
-          } flex gap-[0.75rem] md:gap-2 sm:gap-1 max-w-[9.33em] justify-between items-center text-primary-darkGray text-3xl`}
+          } flex max-w-[9.33em] items-center justify-between gap-[0.75rem] text-3xl text-primary-darkGray md:gap-2 sm:gap-1`}
         >
           <li>
             <AiOutlineSearch
               onClick={() => setShowPopup((prev) => !prev)}
-              className=" sm:text-[1.65rem] lg:flex md:items-center hidden font-thin  shrink-0 hover:cursor-pointer"
+              className="hidden shrink-0 font-thin hover:cursor-pointer lg:flex md:items-center sm:text-[1.65rem]"
             />
           </li>
           <li>
-            <AiOutlineUser className=" sm:text-[1.65rem] font-thin  shrink-0 hover:cursor-pointer" />
+            <AiOutlineUser className="shrink-0 font-thin hover:cursor-pointer sm:text-[1.65rem]" />
           </li>
-          <li className="sm:mr-2 cursor-pointer" onClick={handleShowWishlist}>
+          <li className="cursor-pointer sm:mr-2" onClick={handleShowWishlist}>
             <CountBadge
               Qty={wishlistItems.length}
               icon={
                 <AiOutlineHeart
-                  className="sm:text-[1.65rem] shrink-0 "
+                  className="shrink-0 sm:text-[1.65rem]"
                   title="wish-list"
                 />
               }
@@ -158,7 +158,7 @@ export const ShopsNavbar = () => {
               Qty={totalQty}
               icon={
                 <AiOutlineShoppingCart
-                  className="sm:text-[1.65rem] shrink-0 "
+                  className="shrink-0 sm:text-[1.65rem]"
                   title="cart-items"
                 />
               }

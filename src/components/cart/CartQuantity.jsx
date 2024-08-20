@@ -9,24 +9,21 @@ const CartQuantity = ({
 }) => {
   const mergedStyleQuantity = twMerge(
     "text-base sm:text-sm py-0 px-2",
-    styleQuantity
+    styleQuantity,
   );
 
   return (
-    <div
-      className="flex p-0 items-center justify-between border-[1px] border-primary-black text-primary-black
-    "
-    >
+    <div className="flex items-center justify-between border-[1px] border-primary-black p-0 text-primary-black">
       <button
         onClick={decrementQuantity}
-        className=" text-lg border-r-[1px] border-primary-black px-2  h-8 self-center flex items-center justify-center"
+        className="flex h-8 items-center justify-center self-center border-r-[1px] border-primary-black px-2 text-lg"
       >
         <AiOutlineMinus />
       </button>
       <p className={mergedStyleQuantity}>{quantity}</p>
       <button
         onClick={incrementQuantity}
-        className=" text-xl border-l-[1px] border-primary-black  px-2  h-8  self-center flex items-center justify-center"
+        className="flex h-8 items-center justify-center self-center border-l-[1px] border-primary-black px-2 text-xl"
       >
         <AiOutlinePlus />
       </button>

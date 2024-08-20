@@ -22,21 +22,21 @@ const ProductPreviewView = ({ productDetail, route }) => {
   return (
     <CustomContainer
       key={id}
-      className="flex my-12 justify-between max-w-[88%] lg:max-w-sm xs:max-w-full xs:w-full xs:mx-0 sm:max-w-sm font-primary"
+      className="my-12 flex max-w-[88%] justify-between font-primary lg:max-w-sm sm:max-w-sm xs:mx-0 xs:w-full xs:max-w-full"
     >
       {/* {console.log("in cart", productsDetail.inCart)} */}
-      <div className="flex mx-auto items-center xs:items-stretch gap-12 lg:flex-col md:pb-8">
-        <div className=" flex flex-col items-stretch xl:shrink-0 max-w-[26rem]">
+      <div className="mx-auto flex items-center gap-12 lg:flex-col md:pb-8 xs:items-stretch">
+        <div className="flex max-w-[26rem] flex-col items-stretch xl:shrink-0">
           <NavLink to={route} className="w-max p-0">
             <IconArrow className="rotate-180" />
           </NavLink>
-          <h1 className="text-center capitalize text-2xl font-semibold sm:font-medium  my-6 ">
+          <h1 className="my-6 text-center text-2xl font-semibold capitalize sm:font-medium">
             {name}
           </h1>
           <div className="relative basis-full">
-            <figure className="relative w-full h-full ">
+            <figure className="relative h-full w-full">
               <button
-                className="absolute right-0 p-2 cursor-pointer bg-primary-black"
+                className="absolute right-0 cursor-pointer bg-primary-black p-2"
                 role="button"
                 disabled={productDetail.inWishlist}
                 title={`${
@@ -51,13 +51,13 @@ const ProductPreviewView = ({ productDetail, route }) => {
                   <FaHeart
                     fontWeight="100"
                     size="20"
-                    className="font-thin text-base text-primary-white"
+                    className="text-base font-thin text-primary-white"
                   />
                 ) : (
                   <FaRegHeart
                     fontWeight="100"
                     size="20"
-                    className="font-thin text-base text-primary-white"
+                    className="text-base font-thin text-primary-white"
                   />
                 )}
               </button>
@@ -69,9 +69,9 @@ const ProductPreviewView = ({ productDetail, route }) => {
                 }
                 // src={productsDetail.imageUrl}
                 alt={name}
-                className="rounded-sm z-10 object-cover block w-full max-w-full h-72 xs:h-[16rem]"
+                className="z-10 block h-72 w-full max-w-full rounded-sm object-cover xs:h-[16rem]"
               />
-              <div className="flex justify-between mt-2 gap-1 overflow-x-scroll">
+              <div className="mt-2 flex justify-between gap-1 overflow-x-scroll">
                 {imageVariants.map((el, i) => {
                   return (
                     <img
@@ -80,7 +80,7 @@ const ProductPreviewView = ({ productDetail, route }) => {
                       alt={name}
                       onMouseEnter={() => setIndex(i)}
                       onMouseLeave={() => setIndex(0)}
-                      className="w-20 h-16 rounded-sm z-10 object-cover block"
+                      className="z-10 block h-16 w-20 rounded-sm object-cover"
                     />
                   );
                 })}
@@ -88,13 +88,13 @@ const ProductPreviewView = ({ productDetail, route }) => {
             </figure>
           </div>
         </div>
-        <div key={id} className="flex flex-col xs:basis-full space-y-10">
-          <p className="text-left text-primary-darkGray text-sm max-w-[50ch] xs:max-w-[39ch] ">
+        <div key={id} className="flex flex-col space-y-10 xs:basis-full">
+          <p className="max-w-[50ch] text-left text-sm text-primary-darkGray xs:max-w-[39ch]">
             {description}
           </p>
-          <div className="flex items-center justify-between  gap-8 xs:flex-col xs:items-start">
-            <div className="max-w-min flex flex-1  items-center justify-start  xs:order-last  border-primary-black">
-              <p className=" text-xl mr-3">Quantity</p>
+          <div className="flex items-center justify-between gap-8 xs:flex-col xs:items-start">
+            <div className="flex max-w-min flex-1 items-center justify-start border-primary-black xs:order-last">
+              <p className="mr-3 text-xl">Quantity</p>
               <CartQuantity
                 incrementQuantity={() => handleInc()}
                 decrementQuantity={() => handleDec()}
@@ -104,22 +104,22 @@ const ProductPreviewView = ({ productDetail, route }) => {
             </div>
             <p className="text-xl">{CurrencyFormatter("en-US", price)}</p>
           </div>
-          <div className="flex justify-between xs:flex-col xs:gap-4 gap-2 text-2xl">
+          <div className="flex justify-between gap-2 text-2xl xs:flex-col xs:gap-4">
             <button
               disabled={inCart}
               title={`${inCart ? "product is already in the cart" : ""}`}
               onClick={() => handleAddToCart(productDetail, qty)}
               className={`${
                 inCart &&
-                "bg-gray-900 cursor-not-allowed text-gray-100 border-gray-800 xs:box-border"
-              }bg-gray-900 xs:w-full  rounded-sm xs:px-10 px-8 py-4 shrink-0 max-content border-[1.2px] border-primary-black `}
+                "cursor-not-allowed border-gray-800 bg-gray-900 text-gray-100 xs:box-border"
+              }bg-gray-900 max-content shrink-0 rounded-sm border-[1.2px] border-primary-black px-8 py-4 xs:w-full xs:px-10`}
             >
               add to cart
             </button>
             <Link
               title="buy now!"
               to="/payment/checkout"
-              className="xs:w-full rounded-sm xs:px-10 px-8 py-4 shrink-0 sm:self-start bg-primary-black hover:bg-primary-darkGray hover:text-primary-white transition ease-out xl:text-center text-primary-white"
+              className="shrink-0 rounded-sm bg-primary-black px-8 py-4 text-primary-white transition ease-out hover:bg-primary-darkGray hover:text-primary-white xl:text-center sm:self-start xs:w-full xs:px-10"
             >
               buy now!
             </Link>

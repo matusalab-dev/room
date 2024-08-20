@@ -55,7 +55,7 @@ export const Navbar = ({ className }) => {
   return (
     <>
       {/* <!-- the  left section of the desktop design --> */}
-      <nav className={`${className} nav nav-desktop items-center hide-mobile`}>
+      <nav className={`${className} nav nav-desktop hide-mobile items-center`}>
         <Logo styleLink="mr-10" />
 
         <NavList />
@@ -65,9 +65,9 @@ export const Navbar = ({ className }) => {
       <nav
         className={`${
           isToggled
-            ? "show-mobile sm:fixed sm:justify-between sm:z-[200]"
+            ? "show-mobile sm:fixed sm:z-[200] sm:justify-between"
             : "hide-mobile"
-        }  nav-mobile gap-x-4`}
+        } nav-mobile gap-x-4`}
       >
         <IconClose
           onClick={() => handleIsToggled()}
@@ -82,7 +82,7 @@ export const Navbar = ({ className }) => {
       </nav>
 
       <nav
-        className={`${isToggled ? "hide-mobile" : "show-mobile"}  hide `}
+        className={`${isToggled ? "hide-mobile" : "show-mobile"} hide`}
         id="hamburger-menu"
       >
         <IconHamburger

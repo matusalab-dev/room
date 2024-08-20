@@ -5,7 +5,7 @@ import hero1Mobile from "../assets/images/mobile-image-hero-1.jpg";
 import hero2Mobile from "../assets/images/mobile-image-hero-2.jpg";
 import hero3Mobile from "../assets/images/mobile-image-hero-3.jpg";
 
-const slidesImages = [
+const SLIDES_DATA = [
   {
     heading: "Discover innovative ways to decorate ",
     description:
@@ -26,6 +26,6 @@ const slidesImages = [
   },
 ];
 
-const CarousalList = () => slidesImages;
+// const CarousalList = () => slidesImages;
 
-export default CarousalList;
+export default SLIDES_DATA;

@@ -32,28 +32,28 @@ const ProductItem = ({ searchItem }) => {
               src={productDetail.imageUrl}
               alt={productDetail.name}
               // loading="lazy"
-              className={`z-10 object-cover block w-full max-w-full h-56 transition-all ease-out ${
+              className={`z-10 block h-56 w-full max-w-full object-cover transition-all ease-out ${
                 isHovered ? "group-hover:scale-105" : ""
               }`}
             />
           </figure>
         </NavLink>
       ),
-      [isHovered]
+      [isHovered, productDetail.id]
     );
 
     return (
       <div
         key={productDetail.id}
-        className="h-20 flex flex-col max-w-xs sm:col-span-8 md:col-span-3 lg:col-span-2 col-span-2 "
+        className="flex flex-col h-20 max-w-xs col-span-2 lg:col-span-2 md:col-span-3 sm:col-span-8"
       >
         <MemoizedNavLink />
 
-        <div className="relative bg-primary-white space-y-1 py-4 flex flex-col items-center">
-          <span className="font-semibold text-sm text-primary-darkGray">
+        <div className="relative flex flex-col items-center py-4 space-y-1 bg-primary-white ">
+          <span className="text-sm font-semibold text-primary-darkGray">
             {CurrencyFormatter("en-US", productDetail.price)}
           </span>
-          <figcaption className="text-center font-normal text-lg capitalize  max-w-[20ch]">
+          <figcaption className="max-w-[20ch]  text-center text-lg font-normal capitalize">
             {productDetail.name}
           </figcaption>
           {/* reaction status of the product */}

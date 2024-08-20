@@ -1,11 +1,13 @@
-import { useStateContext } from "../contexts/StateContext";
+// import { useStateContext } from "../contexts/StateContext";
 import { Navbar } from "../components/navbar/Navbar";
+import useSlideshow from "../hooks/useSlideshow";
 
 const Header = () => {
-  const { slideIndex, slidesDetail } = useStateContext();
+  // const { slideIndex, slidesDetail } = useStateContext();
+  const { slideIndex, currentSlide, slidesDetail } = useSlideshow();
 
   return (
-    <header className="hero ">
+    <header className="hero">
       <Navbar />
       <div className="hero__image">
         <picture>
@@ -20,7 +22,7 @@ const Header = () => {
           <img
             src={slidesDetail[slideIndex].imgUrl.desktop}
             alt={slidesDetail[slideIndex].description}
-            className="w-full h-full object-cover"
+            className="h-full w-full object-cover"
           />
         </picture>
       </div>

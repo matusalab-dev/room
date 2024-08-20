@@ -1,8 +1,8 @@
 const CountBadge = ({ Qty, icon }) => {
   return (
-    <span className="flex items-center relative sm:mr-1">
+    <span className="relative flex items-center sm:mr-1">
       {icon}
-      <sup className="z-50 absolute left-5 bg-primary-black m-0 w-6 h-6 border-white border-2 rounded-full flex justify-center items-center font-primary text-sm font-medium text-primary-white">
+      <sup className="absolute left-5 z-50 m-0 flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-primary-black font-primary text-sm font-medium text-primary-white">
         {Qty}
       </sup>
     </span>

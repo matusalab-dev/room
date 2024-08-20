@@ -4,14 +4,13 @@ import { useStateContext } from "../contexts/StateContext";
 import { SHOP_DATA } from "../data/CategoriesData";
 
 const ProductCategory = () => {
-  const { searchItem } = useStateContext();
+  const { searchedItem } = useStateContext();
+  const { productItem, searchTerm } = searchedItem;
 
   return (
     <>
-      {searchItem == "" && (
-        <section
-          className={`mt-12 grid grid-cols-categoryCol grid-rows-categoryRow justify-between gap-4 overflow-x-scroll`}
-        >
+      {searchTerm == "" && (
+        <section className="grid justify-between gap-4 mt-12 overflow-x-scroll grid-cols-categoryCol grid-rows-categoryRow">
           {SHOP_DATA.map((data) => {
             return (
               <NavLink
@@ -20,19 +19,19 @@ const ProductCategory = () => {
                 className={
                   data.className +
                   " " +
-                  "lg:relative lg:col-span-2 lg:row-span-full lg:min-w-[10rem] "
+                  "lg:relative lg:col-span-2 lg:row-span-full lg:min-w-[10rem]"
                 }
               >
                 <figure className="w-full h-full">
                   <img
                     src={data.backgroundImage}
                     alt={`${data.title} category`}
-                    className="z-10 object-cover block  w-full h-full"
+                    className="z-10 block object-cover w-full h-full"
                   />
                 </figure>
-                <figcaption className="category__figcaption drop-shadow-sm shadow-black">
+                <figcaption className="category__figcaption shadow-black drop-shadow-sm">
                   {data.title} <br /> Furnitures
-                  <span className=" text-base">({data.items.length})</span>
+                  <span className="text-base">({data.items.length})</span>
                 </figcaption>
                 <div className="overlay--inner"></div>
               </NavLink>

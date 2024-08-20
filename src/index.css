@@ -13,18 +13,18 @@
 
   /* nav__link hover pseudo el for home-page */
   .nav__link {
-    @apply text-white relative;
+    @apply relative text-white;
   }
 
   .nav__link::after {
-    @apply content-[''] bg-slate-50 absolute bottom-0 left-1/2 -translate-x-1/2 top-[149%] w-[0%] h-[2px] transition-['width'] duration-[0.3s] ease-out;
+    @apply absolute bottom-0 left-1/2 top-[149%] h-[2px] w-[0%] -translate-x-1/2 bg-slate-50 transition-['width'] duration-[0.3s] ease-out content-[''];
   }
   .nav__link:hover::after {
     @apply w-1/2;
   }
   /* nav__link hover pseudo el for shopping-page */
   .nav__link--shop {
-    @apply text-primary-darkGray relative;
+    @apply relative text-primary-darkGray;
   }
 
   /* .nav__link {
@@ -32,7 +32,7 @@
   } */
 
   .nav__link--shop::after {
-    @apply content-[''] bg-primary-darkGray absolute bottom-0 left-1/2 -translate-x-1/2 top-[149%] w-[0%] h-[2px] transition-['width'] duration-[0.3s] ease-out;
+    @apply absolute bottom-0 left-1/2 top-[149%] h-[2px] w-[0%] -translate-x-1/2 bg-primary-darkGray transition-['width'] duration-[0.3s] ease-out content-[''];
   }
   .nav__link--shop:hover::after {
     @apply w-1/2;
@@ -40,19 +40,19 @@
 
   /* nav__link hover pseudo el for shopping-page heading */
   .heading-collection {
-    @apply relative  w-max;
+    @apply relative w-max;
   }
 
   .heading-collection::after {
-    @apply content-[''] bg-primary-black absolute bottom-0 left-1/2  top-[118%] xs:top-[105%] -translate-x-1/2 w-[70%] h-[2px] xs:h-[1px] sm:h-[1.5px] transition-['width'] duration-[0.3s] ease-out;
+    @apply absolute bottom-0 left-1/2 top-[118%] h-[2px] w-[70%] -translate-x-1/2 bg-primary-black transition-['width'] duration-[0.3s] ease-out content-[''] sm:h-[1.5px] xs:top-[105%] xs:h-[1px];
   }
 
   .category__figcaption {
-    @apply absolute z-20 bottom-3 left-3 max-w-[12ch] text-primary-white text-2xl sm:text-xl font-primary font-normal min-w-min leading-5 sm:leading-none;
+    @apply absolute bottom-3 left-3 z-20 min-w-min max-w-[12ch] font-primary text-2xl font-normal leading-5 text-primary-white sm:text-xl sm:leading-none;
   }
 
   /* product name figcaption  */
   .product__figcaption {
-    @apply absolute z-20 bottom-1 left-3 max-w-[18ch] text-primary-white text-sm font-[300];
+    @apply absolute bottom-1 left-3 z-20 max-w-[18ch] text-sm font-[300] text-primary-white;
   }
 }

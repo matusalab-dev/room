@@ -10,11 +10,11 @@ const ProductList = ({ headingTitle, headingClass, children }) => {
 
   return (
     <>
-      <main className=" full-bleed inverse mt-16 pt-6 pb-24">
+      <main className="pt-6 pb-24 mt-16 full-bleed inverse">
         <h1 className={productListHeadingStyle}>{headingTitle}</h1>
         {children}
       </main>
-      <div className="absolute right-0 left-0 mx-0 max-w-full">
+      <div className="absolute left-0 right-0 max-w-full mx-0">
         <Footer className="sm:max-w-full" />
       </div>
     </>

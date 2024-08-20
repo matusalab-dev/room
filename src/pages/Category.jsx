@@ -8,7 +8,7 @@ import { GridLayout } from "../layouts/GridLayout";
 const CategoryPreview = () => {
   const { category } = useParams();
   // console.log("category-title:", category);
-  const CategoryTitle = `${category.toLowerCase()}`;
+  const CategoryTitle = category.toLowerCase();
 
   const data = SHOP_DATA.reduce((acc, category) => {
     const { title, items } = category;
@@ -29,7 +29,7 @@ const CategoryPreview = () => {
       headingClass="heading-collection font-normal xs:text-2xl xs:text-3xl"
       // route={`./${productDetail.id}`}
     >
-      <GridLayout className="grid grid-cols-8 lg:grid-cols-6 justify-items-center lg:justify-center">
+      <GridLayout className="grid grid-cols-8 justify-items-center lg:grid-cols-6 lg:justify-center">
         <ProductItem searchItem={product[0]} />
       </GridLayout>
     </ProductList>
