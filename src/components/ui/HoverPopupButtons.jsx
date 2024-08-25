@@ -6,7 +6,7 @@ const hoverPopupButtons = (currentProduct) => {
 
   // replace width with w-28 if you have more than one buttons
   return (
-    <div className="absolute -top-[170%] mx-auto flex w-28 justify-between bg-primary-white px-4 py-2">
+    <div className="z-[100] absolute flex justify-between px-4 py-2 mx-auto top-full left-1/3 w-28 bg-primary-white">
       <button
         role="button"
         disabled={currentProduct.inCart}
@@ -34,7 +34,7 @@ const hoverPopupButtons = (currentProduct) => {
           <FaHeart
             fontWeight="100"
             size="20"
-            className="font-thin text-base text-primary-darkgray"
+            className="text-base font-thin text-primary-darkgray"
           />
         ) : ( */}
         <FaRegHeart

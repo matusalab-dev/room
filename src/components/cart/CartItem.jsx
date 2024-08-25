@@ -23,7 +23,7 @@ const CartItem = ({
             title="go back to shopping"
             link="../shopping"
             onClick={handleShowCart}
-            className="inline-block items-start self-center bg-primary-black px-3 py-2 text-primary-white"
+            className="items-start self-center inline-block px-3 py-2 bg-primary-black text-primary-white"
           ></NavLinkList>
         </div>
       )}
@@ -36,7 +36,7 @@ const CartItem = ({
           return (
             <div
               key={id}
-              className="hover:shadow-primary-dark-gray grid grid-cols-[7.7em,minmax(max-content,max-content),minmax(max-content,100%)] grid-rows-[repeat(2,min-content)] justify-items-start gap-x-5 gap-y-7 bg-primary-white px-6 py-6 font-normal hover:shadow-md sm:gap-x-3 sm:px-3 sm:py-3 xs:grid-cols-[6.7em,minmax(max-content,max-content),minmax(max-content,100%)]"
+              className="group hover:shadow-primary-dark-gray grid grid-cols-[7.7em,minmax(max-content,max-content),minmax(max-content,100%)] grid-rows-[repeat(2,min-content)] justify-items-start gap-x-5 gap-y-7 bg-primary-white px-6 py-6 font-normal hover:shadow-md sm:gap-x-3 sm:px-3 sm:py-3 xs:grid-cols-[6.7em,minmax(max-content,max-content),minmax(max-content,100%)]"
             >
               <img
                 src={imageUrl}
@@ -47,7 +47,7 @@ const CartItem = ({
                 title={name}
                 to={`/shopping/${cartItem.id}`}
                 onClick={() => handleShowCart(false)}
-                className="col-[2/3] max-w-[18ch] place-items-start whitespace-nowrap break-keep text-[1rem] capitalize sm:max-w-[10ch] sm:text-sm xs:overflow-hidden xs:text-ellipsis"
+                className="group-hover:underline col-[2/3] max-w-[18ch] place-items-start whitespace-nowrap break-keep text-[1rem] capitalize sm:max-w-[10ch] sm:text-sm xs:overflow-hidden xs:text-ellipsis"
               >
                 {name}
               </NavLink>
@@ -60,7 +60,7 @@ const CartItem = ({
                 quantity={quantity}
               />
               <button
-                className="ml-auto self-end"
+                className="self-end ml-auto"
                 onClick={() => handleRemove(cartItem, quantity)}
               >
                 <AiOutlineDelete fontSize="17px" fontWeight="100" />

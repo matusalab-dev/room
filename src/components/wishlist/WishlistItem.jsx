@@ -19,7 +19,7 @@ const WishlistItem = ({
             title="go back to shopping"
             link="../shopping"
             onClick={handleShowWishlist}
-            className="inline-block items-start self-center bg-primary-black px-3 py-2 text-primary-white"
+            className="items-start self-center inline-block px-3 py-2 bg-primary-black text-primary-white"
           ></NavLinkList>
         </div>
       )}
@@ -32,7 +32,7 @@ const WishlistItem = ({
           return (
             <div
               key={id}
-              className="hover:shadow-primary-dark-gray grid grid-cols-[7.7em,minmax(max-content,max-content),minmax(max-content,100%)] grid-rows-[repeat(2,min-content)] justify-items-start gap-x-5 gap-y-7 bg-primary-white px-6 py-6 font-normal hover:shadow-md sm:gap-x-3 sm:px-3 sm:py-3 xs:grid-cols-[6.7em,minmax(max-content,max-content),minmax(max-content,100%)]"
+              className="group hover:shadow-primary-dark-gray grid grid-cols-[7.7em,minmax(max-content,max-content),minmax(max-content,100%)] grid-rows-[repeat(2,min-content)] justify-items-start gap-x-5 gap-y-7 bg-primary-white px-6 py-6 font-normal hover:shadow-md sm:gap-x-3 sm:px-3 sm:py-3 xs:grid-cols-[6.7em,minmax(max-content,max-content),minmax(max-content,100%)]"
             >
               <img
                 src={imageUrl}
@@ -42,7 +42,7 @@ const WishlistItem = ({
               <NavLink
                 title={name}
                 to={`/shopping/${wishlistItem.id}`}
-                className="col-[2/3] max-w-[18ch] place-items-start whitespace-nowrap break-keep p-0 text-[1rem] capitalize sm:max-w-[11ch] sm:text-sm xs:overflow-hidden xs:text-ellipsis"
+                className="group-hover:underline col-[2/3] max-w-[18ch] place-items-start whitespace-nowrap break-keep p-0 text-[1rem] capitalize sm:max-w-[11ch] sm:text-sm xs:overflow-hidden xs:text-ellipsis"
                 onClick={() => handleShowWishlist(false)}
               >
                 {name}
@@ -58,7 +58,7 @@ const WishlistItem = ({
                 Add to cart
               </button>
               <button
-                className="ml-auto self-end"
+                className="self-end ml-auto"
                 onClick={() => handleRemoveWishlist(wishlistItem)}
               >
                 <AiOutlineDelete fontSize="17px" fontWeight="100" />
